@@ -49,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1027313617159',
     projectId: 'myfirebase173',
     authDomain: 'myfirebase173.firebaseapp.com',
+    databaseURL: 'https://myfirebase173-default-rtdb.firebaseio.com',
     storageBucket: 'myfirebase173.appspot.com',
     measurementId: 'G-7YPM6DX80K',
   );
@@ -58,6 +59,7 @@ class DefaultFirebaseOptions {
     appId: '1:1027313617159:android:dbd643c68b8f66c5b31da2',
     messagingSenderId: '1027313617159',
     projectId: 'myfirebase173',
+    databaseURL: 'https://myfirebase173-default-rtdb.firebaseio.com',
     storageBucket: 'myfirebase173.appspot.com',
   );
 
@@ -66,6 +68,7 @@ class DefaultFirebaseOptions {
     appId: '1:1027313617159:ios:3515aee5e8ca9ec6b31da2',
     messagingSenderId: '1027313617159',
     projectId: 'myfirebase173',
+    databaseURL: 'https://myfirebase173-default-rtdb.firebaseio.com',
     storageBucket: 'myfirebase173.appspot.com',
     iosBundleId: 'com.example.firebase173',
   );
@@ -75,6 +78,7 @@ class DefaultFirebaseOptions {
     appId: '1:1027313617159:ios:5160a5cc30ec5996b31da2',
     messagingSenderId: '1027313617159',
     projectId: 'myfirebase173',
+    databaseURL: 'https://myfirebase173-default-rtdb.firebaseio.com',
     storageBucket: 'myfirebase173.appspot.com',
     iosBundleId: 'com.example.firebase173.RunnerTests',
   );
