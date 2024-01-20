@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_173/user_profile_page.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'note_model.dart';
 
@@ -14,6 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late FirebaseFirestore firestore;
+  String? profilePic;
   var titleController = TextEditingController();
   var descController = TextEditingController();
 
@@ -22,19 +25,40 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     firestore = FirebaseFirestore.instance;
+    getProfilePic();
+  }
+
+  void getProfilePic() async{
+
+    var prefs = await SharedPreferences.getInstance();
+    var userId = prefs.getString("userId");
+
+    var user = await firestore
+        .collection("users")
+        .doc(userId).get();
+
+    profilePic = user.data()!['profilePic'];
+    setState(() {
+
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: InkWell(
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => UserProfilePage(profilePicUrl: profilePic ?? "",),));
+          },
+            child: profilePic != null ? Image.network(profilePic!) : Icon(Icons.account_circle)),
         title: Text('Firebase Notes'),
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: firestore
             .collection("users")
             .doc(widget.userId)
-            .collection("notes").where("title", whereIn: [""])
+            .collection("notes")
             .snapshots(),
         builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {

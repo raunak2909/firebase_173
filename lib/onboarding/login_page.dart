@@ -3,6 +3,7 @@ import 'package:firebase_173/onboarding/mobile_login_page.dart';
 import 'package:firebase_173/onboarding/sign_up_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../home_page.dart';
 
@@ -66,6 +67,9 @@ class _LoginPageState extends State<LoginPage> {
                             password: passController.text.toString());
 
                         ///add shared pref here
+                        var prefs = await SharedPreferences.getInstance();
+                        prefs.setString("userId", userCred.user!.uid);
+
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
